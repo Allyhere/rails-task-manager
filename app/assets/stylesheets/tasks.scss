@@ -1,0 +1,126 @@
+@import 'partials/variables';
+
+#all-tasks.container {
+  display: grid;
+  grid-template-columns: minmax(5%, 10px) 1fr minmax(5%, 10px);
+  grid-template-rows: 100px 1fr;
+  height: 100vh;
+  width: 100%;
+  .main-title {
+    grid-area: 1 / 2 / 2 / 3;
+    font-size: calc(2.5em + 1vw);
+    padding: 10px 0;
+  }
+  .task-group {
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-rows: 150px;
+    padding: 10px;
+  }
+
+  .task {
+    border-radius: 8px;
+    box-shadow: 0 0 12px -7px rgba(15, 15, 37, .2);
+    padding: 10px;
+    min-width: 320px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px 0;
+  }
+}
+
+#new-task.container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0 10px;
+  padding: 10px 0 0 10px;
+  .controls {
+    padding: 0;
+    margin-top: 30px;
+    @extend #new-task.container;
+  };
+}
+
+.menu {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  background-color: $blue;
+  border-radius: 50% 50%;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  cursor: pointer;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: appear .8s forwards ease-in-out;
+  .bubble-container {
+    animation: rotate-menu 2s alternate-reverse infinite ease-in-out;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .add-task {
+    color: $white;
+    text-align: center;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  .anim-bubble {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50% 50%;
+    background-color: $blue;
+    &:first-child {
+      bottom: -10px;
+      right: -10px;
+    }
+    &:nth-child(2) {
+      left: -10px;
+      top: -10px;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0 10px;
+  padding: 10px 0 0 10px;
+  max-width: 320px;
+  & > *:nth-child(even) {
+    margin-bottom: 10px;
+  }
+  button {
+    margin-top: 30px;
+    width: 140px;
+    height: 44px;
+    background-color: $blue;
+    color: $white;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
+@keyframes rotate-menu {
+  from { transform: rotate(0); width: 100%; height: 100%; }
+  to { transform: rotate(360deg); width: 40%; height: 40%; }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0px); }
+}

@@ -1,0 +1,13 @@
+<form action="/new" method="post" class="add-task">
+  <label for="title">Task title</label>
+  <input type="text" name="title" id="">
+  <label for="details">Task description</label>
+  <textarea name="details" id="" cols="40" rows="4"></textarea>
+  <% if @task.persisted? %>
+  <div class="form-field">
+    <input type="checkbox" name="completed" value="true">
+    <label for="completed">Completed ?</label><br>
+  </div>
+  <% end %>
+  <button class="submit">Add Task</button>
+</form>

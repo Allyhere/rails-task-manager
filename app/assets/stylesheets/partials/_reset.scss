@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { overflow: hidden; }
+
+ul, ol { list-style: none; }
+
+a { text-decoration: none; }
+
+button {
+  border: none;
+}
+
+:root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

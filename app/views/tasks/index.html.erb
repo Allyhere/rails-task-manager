@@ -1,0 +1,13 @@
+<div id="all-tasks" class="container">
+  <h2 class="main-title">Your f*cking tasks m8</h2>
+  <ul class="task-group">
+   <% @tasks.each do |task| %>
+    <li class="task">
+      <h3 class="task__title"><%= task.title %></h3>
+      <p class="task__details"><%= task.details %></p>
+      <h4 class="task__status"><%= task.completed ? "Completed" : "Pending" %></h4>
+      <%= link_to "Check #{task.title.downcase} task", task_path(task), class:"task__link" %>
+    </li>
+  <% end %>
+  </ul>
+</div>
